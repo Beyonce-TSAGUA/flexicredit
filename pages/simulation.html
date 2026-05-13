@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlexiCredit — Simulez votre crédit</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script>window.dataLayer = window.dataLayer || [];</script>
+</head>
+<body data-step="simulation">
+
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="../index.html" class="logo" style="text-decoration:none">
+          <div class="logo-mark">F</div>
+          Flexi<span>Credit</span>
+        </a>
+        <span class="header-badge">Simulation gratuite & sans engagement</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- FUNNEL PROGRESS -->
+  <div class="funnel-bar">
+    <div class="container">
+      <ul class="funnel-steps">
+        <li class="done"><span class="step-num">✓</span><span class="step-label">Accueil</span></li>
+        <li class="step-sep"></li>
+        <li class="active"><span class="step-num">2</span><span class="step-label">Simulation</span></li>
+        <li class="step-sep"></li>
+        <li><span class="step-num">3</span><span class="step-label">Résultats</span></li>
+        <li class="step-sep"></li>
+        <li><span class="step-num">4</span><span class="step-label">Formulaire</span></li>
+        <li class="step-sep"></li>
+        <li><span class="step-num">5</span><span class="step-label">Confirmation</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <main style="padding: 52px 0 80px;">
+    <div class="container--narrow">
+
+      <div class="fade-in">
+        <h1 class="mb-2">Simulez votre crédit</h1>
+        <p class="text-muted mb-8">Ajustez le montant et la durée pour voir votre mensualité en temps réel.</p>
+      </div>
+
+      <div class="card fade-in">
+
+        <!-- MONTANT -->
+        <div class="form-group" style="margin-bottom:36px">
+          <div class="flex justify-between items-center mb-4">
+            <label class="form-label" style="margin:0">Montant souhaité</label>
+            <div class="slider-value" id="amount-display">5 000 <span>€</span></div>
+          </div>
+          <div class="slider-wrapper">
+            <div class="slider-track-fill" id="amount-fill" style="width:25%"></div>
+            <input type="range" id="amount-slider"
+              min="1000" max="75000" step="500" value="5000"
+              aria-label="Montant du crédit">
+          </div>
+          <div class="slider-labels">
+            <span>1 000 €</span>
+            <span>75 000 €</span>
+          </div>
+        </div>
+
+        <!-- DURÉE -->
+        <div class="form-group" style="margin-bottom:36px">
+          <div class="flex justify-between items-center mb-4">
+            <label class="form-label" style="margin:0">Durée de remboursement</label>
+            <div class="slider-value" id="duration-display">24 <span>mois</span></div>
+          </div>
+          <div class="slider-wrapper">
+            <div class="slider-track-fill" id="duration-fill" style="width:30%"></div>
+            <input type="range" id="duration-slider"
+              min="6" max="84" step="6" value="24"
+              aria-label="Durée du crédit en mois">
+          </div>
+          <div class="slider-labels">
+            <span>6 mois</span>
+            <span>84 mois</span>
+          </div>
+        </div>
+
+        <!-- RÉSULTAT RAPIDE -->
+        <div class="quick-result" id="quick-result">
+          <div class="qr-row">
+            <span>Mensualité estimée</span>
+            <strong id="qr-monthly">—</strong>
+          </div>
+          <div class="qr-row">
+            <span>Taux fixe indicatif</span>
+            <strong id="qr-rate">—</strong>
+          </div>
+          <div class="qr-row" style="border-bottom:none">
+            <span>Coût total du crédit</span>
+            <strong id="qr-total">—</strong>
+          </div>
+        </div>
+
+        <p class="text-muted mt-4" style="font-size:.75rem;line-height:1.5">
+          Simulation à titre indicatif. Le TAEG définitif dépend de votre profil. Offre soumise à acceptation sous conditions.
+        </p>
+
+        <div class="mt-8">
+          <a href="resultats.html" class="btn btn-primary btn-lg btn-full btn-arrow"
+             id="cta-simulation-next"
+             onclick="trackCtaClick('Voir mon offre', 'resultats')">
+            Voir mon offre
+          </a>
+        </div>
+
+        <div class="flex items-center justify-between mt-6">
+          <div class="reassurance">
+            <span class="reassurance-icon">🔒</span>
+            <span>Simulation sans impact sur votre dossier de crédit</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-logo">FlexiCredit</span>
+        <span>Projet de démonstration — Données fictives</span>
+        <div class="footer-links">
+          <a href="#">Mentions légales</a>
+          <a href="#">RGPD</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/tracking.js"></script>
+  <script src="../js/consent.js"></script>
+  <script>
+    // ── Init ──
+    document.addEventListener('DOMContentLoaded', () => {
+      trackPageView('simulation', 2);
+      initScrollTracking('simulation');
+      initExitTracking('simulation', 2);
+      updateSimulation();
+    });
+
+    // ── Calcul mensualité ──
+    function calcMonthly(amount, months) {
+      const rate = getRate(amount, months) / 100 / 12;
+      if (rate === 0) return amount / months;
+      return (amount * rate * Math.pow(1 + rate, months)) / (Math.pow(1 + rate, months) - 1);
+    }
+
+    function getRate(amount, months) {
+      // Barème simplifié fictif
+      if (amount < 3000) return 8.5;
+      if (amount < 10000) return 6.5;
+      if (amount < 30000) return 5.2;
+      return 4.1;
+    }
+
+    function fmt(n) {
+      return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n);
+    }
+
+    function updateSimulation() {
+      const amount = parseInt(document.getElementById('amount-slider').value);
+      const duration = parseInt(document.getElementById('duration-slider').value);
+      const monthly = calcMonthly(amount, duration);
+      const rate = getRate(amount, duration);
+      const totalCost = (monthly * duration) - amount;
+
+      document.getElementById('amount-display').innerHTML = `${amount.toLocaleString('fr-FR')} <span>€</span>`;
+      document.getElementById('duration-display').innerHTML = `${duration} <span>mois</span>`;
+      document.getElementById('qr-monthly').textContent = fmt(monthly) + '/mois';
+      document.getElementById('qr-rate').textContent = rate.toFixed(2) + ' % TAEG';
+      document.getElementById('qr-total').textContent = fmt(totalCost);
+
+      // Track fill visuals
+      const amountPct = ((amount - 1000) / (75000 - 1000)) * 100;
+      const durPct = ((duration - 6) / (84 - 6)) * 100;
+      document.getElementById('amount-fill').style.width = amountPct + '%';
+      document.getElementById('duration-fill').style.width = durPct + '%';
+
+      // Sauvegarde pour les pages suivantes
+      FC.saveSimulation({ amount, duration, monthly: Math.round(monthly), rate, totalCost: Math.round(totalCost) });
+    }
+
+    // ── Sliders avec debounce pour le tracking ──
+    let trackTimeout;
+    function onSliderChange() {
+      updateSimulation();
+      clearTimeout(trackTimeout);
+      trackTimeout = setTimeout(() => {
+        const sim = FC.getSimulation();
+        trackSimulationChange(sim.amount, sim.duration);
+      }, 600);
+    }
+
+    document.getElementById('amount-slider').addEventListener('input', onSliderChange);
+    document.getElementById('duration-slider').addEventListener('input', onSliderChange);
+  </script>
+
+  <style>
+    .quick-result {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+    .qr-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 13px 18px;
+      border-bottom: 1px solid var(--border);
+      font-size: .9rem;
+    }
+    .qr-row span { color: var(--slate); }
+    .qr-row strong { font-family: 'Sora', sans-serif; font-weight: 600; color: var(--navy); }
+  </style>
+</body>
+</html>

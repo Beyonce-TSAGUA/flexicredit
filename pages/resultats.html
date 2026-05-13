@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlexiCredit — Votre offre personnalisée</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script>window.dataLayer = window.dataLayer || [];</script>
+</head>
+<body data-step="resultats">
+
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="../index.html" class="logo" style="text-decoration:none">
+          <div class="logo-mark">F</div>
+          Flexi<span>Credit</span>
+        </a>
+        <span class="header-badge">Simulation gratuite & sans engagement</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="funnel-bar">
+    <div class="container">
+      <ul class="funnel-steps">
+        <li class="done"><span class="step-num">✓</span><span class="step-label">Accueil</span></li>
+        <li class="step-sep"></li>
+        <li class="done"><span class="step-num">✓</span><span class="step-label">Simulation</span></li>
+        <li class="step-sep"></li>
+        <li class="active"><span class="step-num">3</span><span class="step-label">Résultats</span></li>
+        <li class="step-sep"></li>
+        <li><span class="step-num">4</span><span class="step-label">Formulaire</span></li>
+        <li class="step-sep"></li>
+        <li><span class="step-num">5</span><span class="step-label">Confirmation</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <main style="padding: 52px 0 80px;">
+    <div class="container--narrow">
+
+      <div class="fade-in">
+        <div class="badge badge-green mb-4">✦ Offre disponible</div>
+        <h1 class="mb-2">Votre offre personnalisée</h1>
+        <p class="text-muted mb-8">Basée sur votre simulation. Finalisez votre demande pour obtenir une réponse de principe.</p>
+      </div>
+
+      <!-- RÉSULTAT PRINCIPAL -->
+      <div class="result-highlight fade-in" id="result-box">
+        <p class="result-label">Votre mensualité estimée</p>
+        <div class="result-main" id="res-monthly">— €/mois</div>
+        <div class="result-grid">
+          <div class="result-cell">
+            <div class="result-cell-val" id="res-amount">—</div>
+            <div class="result-cell-lbl">Montant emprunté</div>
+          </div>
+          <div class="result-cell">
+            <div class="result-cell-val" id="res-duration">—</div>
+            <div class="result-cell-lbl">Durée</div>
+          </div>
+          <div class="result-cell">
+            <div class="result-cell-val" id="res-rate">—</div>
+            <div class="result-cell-lbl">TAEG fixe</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DÉTAILS -->
+      <div class="card fade-in mt-6">
+        <h3 class="mb-4">Détail de votre crédit</h3>
+        <div class="detail-row">
+          <span>Montant total dû (hors assurance)</span>
+          <strong id="res-total-due">—</strong>
+        </div>
+        <div class="detail-row">
+          <span>Coût total du crédit</span>
+          <strong id="res-cost">—</strong>
+        </div>
+        <div class="detail-row">
+          <span>Frais de dossier</span>
+          <strong class="text-green">0 €</strong>
+        </div>
+        <div class="detail-row" style="border-bottom:none">
+          <span>Assurance facultative</span>
+          <strong>Sur demande</strong>
+        </div>
+
+        <div class="mt-6" style="background:var(--green-pale);border-radius:var(--radius);padding:14px 16px;font-size:.82rem;color:var(--green)">
+          ✓ Offre sans frais de remboursement anticipé · Taux fixe sur toute la durée
+        </div>
+      </div>
+
+      <!-- RÉASSURANCE -->
+      <div class="reassurance-band card-sm mt-4 fade-in">
+        <div class="trust-row" style="justify-content:center">
+          <div class="trust-item"><div class="trust-icon">🏦</div><span>Organisme agréé ACPR</span></div>
+          <div class="trust-item"><div class="trust-icon">🔒</div><span>Données chiffrées SSL</span></div>
+          <div class="trust-item"><div class="trust-icon">📄</div><span>Offre remise par écrit</span></div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-8 fade-in">
+        <a href="formulaire.html" class="btn btn-primary btn-lg btn-full btn-arrow"
+           id="cta-resultats-next"
+           onclick="trackCtaClick('Finaliser ma demande', 'formulaire')">
+          Finaliser ma demande
+        </a>
+        <div class="text-center mt-4">
+          <a href="simulation.html" class="text-muted" style="font-size:.875rem"
+             onclick="trackCtaClick('Modifier ma simulation', 'simulation')">
+            ← Modifier ma simulation
+          </a>
+        </div>
+      </div>
+
+      <p class="text-muted text-center mt-6" style="font-size:.75rem;line-height:1.6">
+        Simulation non contractuelle. Le TAEG définitif et les conditions d'octroi seront déterminés après étude de votre dossier. Prêt soumis à l'acceptation de la société FlexiCredit (fictif). Vous disposez d'un délai de rétractation de 14 jours.
+      </p>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-logo">FlexiCredit</span>
+        <span>Projet de démonstration — Données fictives</span>
+        <div class="footer-links">
+          <a href="#">Mentions légales</a>
+          <a href="#">RGPD</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/tracking.js"></script>
+  <script src="../js/consent.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      trackPageView('resultats', 3);
+      initScrollTracking('resultats');
+      initExitTracking('resultats', 3);
+      renderResults();
+    });
+
+    function fmt(n) {
+      return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n);
+    }
+
+    function renderResults() {
+      const sim = FC.getSimulation();
+
+      // Valeurs par défaut si on arrive directement sur la page
+      const amount   = sim.amount   || 5000;
+      const duration = sim.duration || 24;
+      const monthly  = sim.monthly  || 221;
+      const rate     = sim.rate     || 6.5;
+      const cost     = sim.totalCost || 304;
+
+      document.getElementById('res-monthly').textContent  = fmt(monthly) + '/mois';
+      document.getElementById('res-amount').textContent   = fmt(amount);
+      document.getElementById('res-duration').textContent = duration + ' mois';
+      document.getElementById('res-rate').textContent     = rate.toFixed(2) + ' %';
+      document.getElementById('res-total-due').textContent = fmt(monthly * duration);
+      document.getElementById('res-cost').textContent     = fmt(cost);
+    }
+  </script>
+
+  <style>
+    .text-green { color: var(--green); }
+    .detail-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 11px 0; border-bottom: 1px solid var(--border);
+      font-size: .9rem;
+    }
+    .detail-row span { color: var(--slate); }
+    .detail-row strong { font-family: 'Sora', sans-serif; font-weight: 600; color: var(--navy); }
+    .reassurance-band {
+      background: var(--white); border: 1px solid var(--border);
+    }
+  </style>
+</body>
+</html>

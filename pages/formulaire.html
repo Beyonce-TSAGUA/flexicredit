@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlexiCredit — Votre demande</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script>window.dataLayer = window.dataLayer || [];</script>
+</head>
+<body data-step="formulaire">
+
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="../index.html" class="logo" style="text-decoration:none">
+          <div class="logo-mark">F</div>
+          Flexi<span>Credit</span>
+        </a>
+        <span class="header-badge">Vos données sont sécurisées</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="funnel-bar">
+    <div class="container">
+      <ul class="funnel-steps">
+        <li class="done"><span class="step-num">✓</span><span class="step-label">Accueil</span></li>
+        <li class="step-sep"></li>
+        <li class="done"><span class="step-num">✓</span><span class="step-label">Simulation</span></li>
+        <li class="step-sep"></li>
+        <li class="done"><span class="step-num">✓</span><span class="step-label">Résultats</span></li>
+        <li class="step-sep"></li>
+        <li class="active"><span class="step-num">4</span><span class="step-label">Formulaire</span></li>
+        <li class="step-sep"></li>
+        <li><span class="step-num">5</span><span class="step-label">Confirmation</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <main style="padding: 52px 0 80px;">
+    <div class="container--narrow">
+
+      <div class="fade-in">
+        <h1 class="mb-2">Finalisez votre demande</h1>
+        <p class="text-muted mb-8">Complétez vos informations. Cela prend moins de 3 minutes.</p>
+      </div>
+
+      <!-- RÉCAP SIMULATION -->
+      <div class="sim-recap card-sm fade-in mb-6">
+        <div class="sim-recap-row">
+          <span class="text-muted">Votre simulation</span>
+          <a href="simulation.html" class="sim-edit" onclick="trackCtaClick('Modifier simulation depuis formulaire', 'simulation')">Modifier</a>
+        </div>
+        <div class="sim-recap-values">
+          <div><strong id="recap-amount">—</strong><span class="text-muted"> empruntés</span></div>
+          <div class="sim-sep">·</div>
+          <div><strong id="recap-duration">—</strong><span class="text-muted"> mois</span></div>
+          <div class="sim-sep">·</div>
+          <div><strong id="recap-monthly">—/mois</strong></div>
+        </div>
+      </div>
+
+      <!-- FORMULAIRE -->
+      <form id="credit-form" novalidate class="fade-in" onsubmit="return handleSubmit(event)">
+        <div class="card">
+
+          <div class="form-section-title">Votre identité</div>
+
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label" for="f-prenom">Prénom <span class="required">*</span></label>
+              <input type="text" id="f-prenom" class="form-input" placeholder="Marie"
+                autocomplete="given-name"
+                onfocus="trackFieldFocus('prenom')"
+                oninput="validateField(this, 'prenom')">
+              <span class="form-error" id="err-prenom">Veuillez saisir votre prénom.</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f-nom">Nom <span class="required">*</span></label>
+              <input type="text" id="f-nom" class="form-input" placeholder="Dupont"
+                autocomplete="family-name"
+                onfocus="trackFieldFocus('nom')"
+                oninput="validateField(this, 'nom')">
+              <span class="form-error" id="err-nom">Veuillez saisir votre nom.</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="f-email">Adresse e-mail <span class="required">*</span></label>
+            <input type="email" id="f-email" class="form-input" placeholder="marie.dupont@email.fr"
+              autocomplete="email"
+              onfocus="trackFieldFocus('email')"
+              oninput="validateField(this, 'email')">
+            <span class="form-hint">Nous vous enverrons la confirmation à cette adresse.</span>
+            <span class="form-error" id="err-email">Veuillez saisir une adresse e-mail valide.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="f-telephone">Téléphone mobile <span class="required">*</span></label>
+            <input type="tel" id="f-telephone" class="form-input" placeholder="06 12 34 56 78"
+              autocomplete="tel"
+              onfocus="trackFieldFocus('telephone')"
+              oninput="validateField(this, 'telephone')">
+            <span class="form-error" id="err-telephone">Format attendu : 06 XX XX XX XX</span>
+          </div>
+
+          <div class="form-section-title mt-6">Votre situation</div>
+
+          <div class="form-group">
+            <label class="form-label" for="f-situation">Situation professionnelle <span class="required">*</span></label>
+            <select id="f-situation" class="form-select"
+              onfocus="trackFieldFocus('situation')"
+              onchange="validateField(this, 'situation')">
+              <option value="">— Sélectionnez —</option>
+              <option value="cdi">CDI</option>
+              <option value="cdd">CDD</option>
+              <option value="independant">Indépendant / Freelance</option>
+              <option value="fonctionnaire">Fonctionnaire</option>
+              <option value="retraite">Retraité</option>
+              <option value="autre">Autre</option>
+            </select>
+            <span class="form-error" id="err-situation">Veuillez sélectionner votre situation.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="f-revenus">
+              Revenus nets mensuels <span class="required">*</span>
+            </label>
+            <input type="text" id="f-revenus" class="form-input" placeholder="Ex : 2 500"
+              onfocus="trackFieldFocus('revenus')"
+              oninput="validateField(this, 'revenus')">
+            <span class="form-hint">Saisissez un montant en euros, sans symbole (ex : 2500)</span>
+            <span class="form-error" id="err-revenus">Veuillez saisir un montant valide (chiffres uniquement).</span>
+          </div>
+
+          <div class="form-section-title mt-6">Consentements</div>
+
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="f-cgv" required
+                onchange="validateField(this, 'cgv')">
+              <span>J'accepte les <a href="#">conditions générales</a> et la <a href="#">politique de confidentialité</a> <span class="required">*</span></span>
+            </label>
+            <span class="form-error" id="err-cgv">Vous devez accepter les conditions pour continuer.</span>
+          </div>
+
+          <div class="checkbox-group mt-3">
+            <label class="checkbox-label">
+              <input type="checkbox" id="f-optin">
+              <span class="text-muted">J'accepte de recevoir des offres personnalisées par e-mail (optionnel)</span>
+            </label>
+          </div>
+
+          <div class="mt-8">
+            <button type="submit" class="btn btn-primary btn-lg btn-full" id="cta-form-submit">
+              Envoyer ma demande →
+            </button>
+          </div>
+
+          <div class="flex items-center gap-3 mt-6" style="justify-content:center">
+            <div class="reassurance"><span class="reassurance-icon">🔒</span><span>SSL 256 bits</span></div>
+            <span class="text-muted">·</span>
+            <div class="reassurance"><span class="reassurance-icon">🛡️</span><span>RGPD conforme</span></div>
+            <span class="text-muted">·</span>
+            <div class="reassurance"><span class="reassurance-icon">📋</span><span>Données non revendues</span></div>
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-logo">FlexiCredit</span>
+        <span>Projet de démonstration — Données fictives</span>
+        <div class="footer-links">
+          <a href="#">Mentions légales</a>
+          <a href="#">RGPD</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/tracking.js"></script>
+  <script src="../js/consent.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      trackPageView('formulaire', 4);
+      initScrollTracking('formulaire');
+      initExitTracking('formulaire', 4);
+      renderRecap();
+    });
+
+    function renderRecap() {
+      const sim = FC.getSimulation();
+      if (sim.amount) {
+        const fmt = n => new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n);
+        document.getElementById('recap-amount').textContent = fmt(sim.amount);
+        document.getElementById('recap-duration').textContent = sim.duration;
+        document.getElementById('recap-monthly').textContent = fmt(sim.monthly) + '/mois';
+      }
+    }
+
+    // ── Validation en temps réel ──
+    const validators = {
+      prenom:    v => v.trim().length >= 2,
+      nom:       v => v.trim().length >= 2,
+      email:     v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
+      telephone: v => /^(0[6-7])[0-9 ]{8,}$/.test(v.replace(/\s/g, '')),
+      situation: v => v !== '',
+      revenus:   v => /^\d[\d\s]*$/.test(v.trim()) && parseInt(v.replace(/\s/g, '')) > 0,
+      cgv:       (_, el) => el.checked
+    };
+
+    const completedFields = new Set();
+
+    function validateField(el, name) {
+      const val = el.value;
+      const isValid = validators[name] ? validators[name](val, el) : true;
+      const errEl = document.getElementById('err-' + name);
+
+      if (isValid) {
+        el.classList.remove('error');
+        el.classList.add('valid');
+        if (errEl) { errEl.classList.remove('visible'); }
+        if (!completedFields.has(name)) {
+          completedFields.add(name);
+          trackFieldComplete(name);
+        }
+      } else {
+        el.classList.remove('valid');
+        // On ne montre l'erreur qu'après que l'utilisateur ait quitté le champ
+      }
+    }
+
+    function showFieldError(el, name) {
+      const val = el.value || el.checked;
+      const isValid = validators[name] ? validators[name](el.value, el) : true;
+      if (!isValid && (el.value || name === 'cgv')) {
+        el.classList.add('error');
+        const errEl = document.getElementById('err-' + name);
+        if (errEl) {
+          errEl.classList.add('visible');
+          trackFieldError(name, 'format_invalide');
+        }
+      }
+    }
+
+    // Bind blur pour afficher les erreurs
+    ['prenom','nom','email','telephone','situation','revenus'].forEach(name => {
+      const el = document.getElementById('f-' + name);
+      if (el) el.addEventListener('blur', () => showFieldError(el, name));
+    });
+    document.getElementById('f-cgv').addEventListener('change', function() {
+      if (!this.checked) showFieldError(this, 'cgv');
+    });
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      trackFormSubmitAttempt();
+
+      // Validation complète
+      const fields = ['prenom','nom','email','telephone','situation','revenus','cgv'];
+      let valid = true;
+      fields.forEach(name => {
+        const el = document.getElementById('f-' + name);
+        const isValid = validators[name] ? validators[name](el.value, el) : true;
+        if (!isValid) {
+          showFieldError(el, name);
+          valid = false;
+        }
+      });
+
+      if (valid) {
+        trackFormSubmitSuccess();
+        window.location.href = 'confirmation.html';
+      } else {
+        // Scroll vers la première erreur
+        const firstErr = document.querySelector('.form-error.visible');
+        if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      return false;
+    }
+  </script>
+
+  <style>
+    .form-section-title {
+      font-family: 'Sora', sans-serif; font-size: .75rem; font-weight: 600;
+      color: var(--muted); text-transform: uppercase; letter-spacing: .08em;
+      padding-bottom: 12px; margin-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .sim-recap {
+      background: var(--navy); border-radius: var(--radius);
+      padding: 14px 18px; color: #fff;
+    }
+    .sim-recap-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .sim-recap-row .text-muted { color: rgba(255,255,255,.55); font-size: .8rem; }
+    .sim-edit { font-size: .8rem; color: var(--green-mid); text-decoration: none; }
+    .sim-edit:hover { color: #fff; }
+    .sim-recap-values { display: flex; gap: 8px; align-items: center; }
+    .sim-recap-values strong { font-family: 'Sora', sans-serif; font-size: 1rem; color: #fff; }
+    .sim-recap-values .text-muted { color: rgba(255,255,255,.5); font-size: .875rem; }
+    .sim-sep { color: rgba(255,255,255,.3); }
+
+    .checkbox-group { display: flex; flex-direction: column; gap: 4px; }
+    .checkbox-label { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; font-size: .875rem; }
+    .checkbox-label input[type=checkbox] { margin-top: 2px; width: 16px; height: 16px; accent-color: var(--green); flex-shrink: 0; }
+  </style>
+</body>
+</html>

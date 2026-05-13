@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlexiCredit — Votre crédit personnel en ligne</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- GTM (simulation — en prod on mettrait le vrai snippet) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    // GTM snippet ici en production
+  </script>
+</head>
+<body data-step="landing">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <div class="logo">
+          <div class="logo-mark">F</div>
+          Flexi<span>Credit</span>
+        </div>
+        <span class="header-badge">Simulation gratuite & sans engagement</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-content fade-in">
+          <div class="badge badge-green mb-4">✦ 100% en ligne · Réponse rapide</div>
+          <h1>Votre crédit personnel,<br>simple et transparent.</h1>
+          <p class="hero-subtitle">Simulez votre prêt en 2 minutes. Obtenez une offre personnalisée sans engagement, sans frais de dossier.</p>
+
+          <div class="hero-cta mt-8">
+            <a href="pages/simulation.html" class="btn btn-primary btn-lg btn-arrow" id="cta-hero-main"
+               onclick="trackCtaClick('Simuler mon crédit', 'simulation')">
+              Simuler mon crédit
+            </a>
+            <p class="text-muted mt-4">⏱ 2 minutes · Sans impact sur votre score</p>
+          </div>
+
+          <div class="trust-row mt-8">
+            <div class="trust-item">
+              <div class="trust-icon">🔒</div>
+              <span>Données sécurisées</span>
+            </div>
+            <div class="trust-item">
+              <div class="trust-icon">🏦</div>
+              <span>Organisme agréé</span>
+            </div>
+            <div class="trust-item">
+              <div class="trust-icon">⚡</div>
+              <span>Réponse immédiate</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual fade-in">
+          <div class="preview-card card">
+            <div class="preview-label text-muted mb-4">Exemple de simulation</div>
+            <div class="preview-amount">8 000 €</div>
+            <div class="text-muted mb-6" style="font-size:.85rem">sur 36 mois</div>
+            <div class="preview-row">
+              <span class="text-muted">Mensualité estimée</span>
+              <strong>241 €/mois</strong>
+            </div>
+            <div class="preview-row">
+              <span class="text-muted">Taux fixe</span>
+              <strong>5,90 % TAEG</strong>
+            </div>
+            <div class="preview-row">
+              <span class="text-muted">Coût total du crédit</span>
+              <strong>676 €</strong>
+            </div>
+            <div class="preview-disclaimer mt-4">
+              Exemple à titre indicatif. Offre soumise à acceptation.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ETAPES -->
+  <section class="how-it-works">
+    <div class="container">
+      <h2 class="text-center mb-6">Comment ça marche ?</h2>
+      <div class="steps-grid">
+        <div class="step-card card-sm">
+          <div class="step-number">1</div>
+          <h3>Simulez</h3>
+          <p>Choisissez votre montant et votre durée. Voyez instantanément votre mensualité.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step-card card-sm">
+          <div class="step-number">2</div>
+          <h3>Complétez</h3>
+          <p>Renseignez vos informations en quelques minutes depuis votre téléphone.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step-card card-sm">
+          <div class="step-number">3</div>
+          <h3>Recevez</h3>
+          <p>Obtenez votre réponse de principe immédiatement, sans justificatif initial.</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-8">
+        <a href="pages/simulation.html" class="btn btn-primary btn-arrow"
+           onclick="trackCtaClick('Je commence maintenant', 'simulation')">
+          Je commence maintenant
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-logo">FlexiCredit</span>
+        <span>Projet de démonstration — Données fictives</span>
+        <div class="footer-links">
+          <a href="#">Mentions légales</a>
+          <a href="#">RGPD</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/tracking.js"></script>
+  <script src="js/consent.js"></script>
+  <script>
+    // PAGE VIEW — Étape 1/5
+    document.addEventListener('DOMContentLoaded', () => {
+      trackPageView('landing', 1);
+      initScrollTracking('landing');
+    });
+  </script>
+
+  <style>
+    .hero { padding: 72px 0 80px; }
+    .hero-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center;
+    }
+    .hero-subtitle { font-size: 1.1rem; color: var(--slate); margin-top: 16px; line-height: 1.7; }
+    .hero-cta { display: flex; flex-direction: column; align-items: flex-start; }
+
+    .preview-card { max-width: 320px; margin-left: auto; }
+    .preview-amount {
+      font-family: 'Sora', sans-serif; font-size: 2.4rem; font-weight: 700;
+      color: var(--navy); margin-bottom: 4px;
+    }
+    .preview-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 0; border-bottom: 1px solid var(--border);
+      font-size: .9rem;
+    }
+    .preview-row:last-of-type { border-bottom: none; }
+    .preview-disclaimer { font-size: .72rem; color: var(--muted); line-height: 1.5; }
+
+    .how-it-works { padding: 72px 0; background: var(--white); }
+    .steps-grid {
+      display: flex; align-items: center; gap: 8px;
+      max-width: 860px; margin: 0 auto;
+    }
+    .step-card { flex: 1; text-align: center; padding: 28px 20px; }
+    .step-number {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--green-pale); color: var(--green);
+      font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 14px;
+    }
+    .step-card h3 { margin-bottom: 8px; }
+    .step-card p { font-size: .875rem; }
+    .step-arrow { font-size: 1.4rem; color: var(--border); flex-shrink: 0; }
+
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-visual { display: none; }
+      .steps-grid { flex-direction: column; align-items: stretch; }
+      .step-arrow { transform: rotate(90deg); text-align: center; }
+    }
+  </style>
+</body>
+</html>

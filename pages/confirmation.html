@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlexiCredit — Demande confirmée</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script>window.dataLayer = window.dataLayer || [];</script>
+</head>
+<body data-step="confirmation">
+
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="../index.html" class="logo" style="text-decoration:none">
+          <div class="logo-mark">F</div>
+          Flexi<span>Credit</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="funnel-bar">
+    <div class="container">
+      <ul class="funnel-steps">
+        <li class="done"><span class="step-num">✓</span><span class="step-label">Accueil</span></li>
+        <li class="step-sep"></li>
+        <li class="done"><span class="step-num">✓</span><span class="step-label">Simulation</span></li>
+        <li class="step-sep"></li>
+        <li class="done"><span class="step-num">✓</span><span class="step-label">Résultats</span></li>
+        <li class="step-sep"></li>
+        <li class="done"><span class="step-num">✓</span><span class="step-label">Formulaire</span></li>
+        <li class="step-sep"></li>
+        <li class="active"><span class="step-num">5</span><span class="step-label">Confirmation</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <main style="padding: 52px 0 80px;">
+    <div class="container--narrow">
+
+      <!-- SUCCESS HEADER -->
+      <div class="confetti-header fade-in">
+        <div class="check-circle">✅</div>
+        <h1 style="margin-bottom:12px">Votre demande est enregistrée !</h1>
+        <p class="text-muted" style="font-size:1.05rem;max-width:460px;margin:0 auto">
+          Nous avons bien reçu votre demande de crédit. Notre équipe vous contacte sous 24h ouvrées.
+        </p>
+      </div>
+
+      <!-- RÉCAP FINAL -->
+      <div class="card fade-in mt-6" id="confirmation-recap">
+        <div class="conf-section-title">Récapitulatif de votre demande</div>
+        <div class="conf-row">
+          <span>Référence dossier</span>
+          <strong id="conf-ref" class="text-green">—</strong>
+        </div>
+        <div class="conf-row">
+          <span>Montant demandé</span>
+          <strong id="conf-amount">—</strong>
+        </div>
+        <div class="conf-row">
+          <span>Durée</span>
+          <strong id="conf-duration">—</strong>
+        </div>
+        <div class="conf-row">
+          <span>Mensualité estimée</span>
+          <strong id="conf-monthly">—</strong>
+        </div>
+        <div class="conf-row" style="border-bottom:none">
+          <span>Statut</span>
+          <span class="badge badge-green">En cours d'analyse</span>
+        </div>
+      </div>
+
+      <!-- PROCHAINES ÉTAPES -->
+      <div class="card fade-in mt-4">
+        <div class="conf-section-title">Prochaines étapes</div>
+        <div class="next-steps">
+          <div class="next-step">
+            <div class="next-step-icon">📧</div>
+            <div>
+              <strong>Confirmation par e-mail</strong>
+              <p>Un récapitulatif vous a été envoyé à l'adresse fournie.</p>
+            </div>
+          </div>
+          <div class="next-step">
+            <div class="next-step-icon">📞</div>
+            <div>
+              <strong>Appel de notre conseiller</strong>
+              <p>Sous 24h ouvrées pour étudier votre dossier avec vous.</p>
+            </div>
+          </div>
+          <div class="next-step">
+            <div class="next-step-icon">✍️</div>
+            <div>
+              <strong>Signature électronique</strong>
+              <p>Si votre offre est acceptée, signez en quelques clics depuis chez vous.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA SECONDAIRE -->
+      <div class="text-center mt-8 fade-in">
+        <a href="../index.html" class="btn btn-outline"
+           onclick="trackCtaClick('Retour accueil depuis confirmation', 'landing')">
+          Retour à l'accueil
+        </a>
+        <p class="text-muted mt-4" style="font-size:.82rem">
+          Une question ? Contactez-nous au <strong>01 23 45 67 89</strong> (lun–ven, 9h–18h)
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-logo">FlexiCredit</span>
+        <span>Projet de démonstration — Données fictives</span>
+        <div class="footer-links">
+          <a href="#">Mentions légales</a>
+          <a href="#">RGPD</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/tracking.js"></script>
+  <script src="../js/consent.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      trackPageView('confirmation', 5);
+      initScrollTracking('confirmation');
+      renderConfirmation();
+    });
+
+    function renderConfirmation() {
+      const sim = FC.getSimulation();
+      const fmt = n => new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n);
+
+      // Référence unique fictive
+      const ref = 'FC-' + Date.now().toString(36).toUpperCase().slice(-6);
+      document.getElementById('conf-ref').textContent = ref;
+
+      if (sim.amount) {
+        document.getElementById('conf-amount').textContent   = fmt(sim.amount);
+        document.getElementById('conf-duration').textContent = sim.duration + ' mois';
+        document.getElementById('conf-monthly').textContent  = fmt(sim.monthly) + '/mois';
+      }
+
+      // Nettoyer la session après confirmation
+      sessionStorage.removeItem('fc_simulation');
+    }
+  </script>
+
+  <style>
+    .text-green { color: var(--green); }
+    .conf-section-title {
+      font-family: 'Sora', sans-serif; font-size: .75rem; font-weight: 600;
+      color: var(--muted); text-transform: uppercase; letter-spacing: .08em;
+      padding-bottom: 12px; margin-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .conf-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 11px 0; border-bottom: 1px solid var(--border);
+      font-size: .9rem;
+    }
+    .conf-row span:first-child { color: var(--slate); }
+    .conf-row strong { font-family: 'Sora', sans-serif; font-weight: 600; color: var(--navy); }
+
+    .next-steps { display: flex; flex-direction: column; gap: 16px; margin-top: 4px; }
+    .next-step { display: flex; gap: 14px; align-items: flex-start; }
+    .next-step-icon {
+      width: 36px; height: 36px; flex-shrink: 0;
+      background: var(--green-pale); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+    .next-step strong { font-size: .9rem; color: var(--navy); display: block; margin-bottom: 2px; }
+    .next-step p { font-size: .82rem; color: var(--muted); margin: 0; }
+  </style>
+</body>
+</html>
