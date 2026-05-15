@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-TTVVF8ZS');</script>
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-TTVVF8ZS');</script>
   <!-- End Google Tag Manager -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FlexiCredit — Demande confirmée</title>
   <link rel="stylesheet" href="../css/style.css">
-  <script>window.dataLayer = window.dataLayer || [];</script>
 </head>
+
 <body data-step="confirmation">
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TTVVF8ZS"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TTVVF8ZS" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
   <header class="site-header">
     <div class="container">
       <div class="header-inner">
@@ -114,7 +118,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- CTA SECONDAIRE -->
       <div class="text-center mt-8 fade-in">
         <a href="../index.html" class="btn btn-outline"
-           onclick="trackCtaClick('Retour accueil depuis confirmation', 'landing')">
+          onclick="trackCtaClick('Retour accueil depuis confirmation', 'landing')">
           Retour à l'accueil
         </a>
         <p class="text-muted mt-4" style="font-size:.82rem">
@@ -156,9 +160,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       document.getElementById('conf-ref').textContent = ref;
 
       if (sim.amount) {
-        document.getElementById('conf-amount').textContent   = fmt(sim.amount);
+        document.getElementById('conf-amount').textContent = fmt(sim.amount);
         document.getElementById('conf-duration').textContent = sim.duration + ' mois';
-        document.getElementById('conf-monthly').textContent  = fmt(sim.monthly) + '/mois';
+        document.getElementById('conf-monthly').textContent = fmt(sim.monthly) + '/mois';
       }
 
       // Nettoyer la session après confirmation
@@ -167,31 +171,79 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </script>
 
   <style>
-    .text-green { color: var(--green); }
+    .text-green {
+      color: var(--green);
+    }
+
     .conf-section-title {
-      font-family: 'Sora', sans-serif; font-size: .75rem; font-weight: 600;
-      color: var(--muted); text-transform: uppercase; letter-spacing: .08em;
-      padding-bottom: 12px; margin-bottom: 8px;
+      font-family: 'Sora', sans-serif;
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      padding-bottom: 12px;
+      margin-bottom: 8px;
       border-bottom: 1px solid var(--border);
     }
+
     .conf-row {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 11px 0; border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--border);
       font-size: .9rem;
     }
-    .conf-row span:first-child { color: var(--slate); }
-    .conf-row strong { font-family: 'Sora', sans-serif; font-weight: 600; color: var(--navy); }
 
-    .next-steps { display: flex; flex-direction: column; gap: 16px; margin-top: 4px; }
-    .next-step { display: flex; gap: 14px; align-items: flex-start; }
+    .conf-row span:first-child {
+      color: var(--slate);
+    }
+
+    .conf-row strong {
+      font-family: 'Sora', sans-serif;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .next-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 4px;
+    }
+
+    .next-step {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
     .next-step-icon {
-      width: 36px; height: 36px; flex-shrink: 0;
-      background: var(--green-pale); border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+      background: var(--green-pale);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 1.1rem;
     }
-    .next-step strong { font-size: .9rem; color: var(--navy); display: block; margin-bottom: 2px; }
-    .next-step p { font-size: .82rem; color: var(--muted); margin: 0; }
+
+    .next-step strong {
+      font-size: .9rem;
+      color: var(--navy);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .next-step p {
+      font-size: .82rem;
+      color: var(--muted);
+      margin: 0;
+    }
   </style>
 </body>
+
 </html>

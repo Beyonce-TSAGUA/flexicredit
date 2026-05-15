@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-TTVVF8ZS');</script>
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-TTVVF8ZS');</script>
   <!-- End Google Tag Manager -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FlexiCredit — Simulez votre crédit</title>
   <link rel="stylesheet" href="../css/style.css">
-  <script>window.dataLayer = window.dataLayer || [];</script>
 </head>
+
 <body data-step="simulation">
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TTVVF8ZS"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TTVVF8ZS" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
   <header class="site-header">
     <div class="container">
       <div class="header-inner">
@@ -66,8 +70,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
           <div class="slider-wrapper">
             <div class="slider-track-fill" id="amount-fill" style="width:25%"></div>
-            <input type="range" id="amount-slider"
-              min="1000" max="75000" step="500" value="5000"
+            <input type="range" id="amount-slider" min="1000" max="75000" step="500" value="5000"
               aria-label="Montant du crédit">
           </div>
           <div class="slider-labels">
@@ -84,8 +87,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
           <div class="slider-wrapper">
             <div class="slider-track-fill" id="duration-fill" style="width:30%"></div>
-            <input type="range" id="duration-slider"
-              min="6" max="84" step="6" value="24"
+            <input type="range" id="duration-slider" min="6" max="84" step="6" value="24"
               aria-label="Durée du crédit en mois">
           </div>
           <div class="slider-labels">
@@ -111,13 +113,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
 
         <p class="text-muted mt-4" style="font-size:.75rem;line-height:1.5">
-          Simulation à titre indicatif. Le TAEG définitif dépend de votre profil. Offre soumise à acceptation sous conditions.
+          Simulation à titre indicatif. Le TAEG définitif dépend de votre profil. Offre soumise à acceptation sous
+          conditions.
         </p>
 
         <div class="mt-8">
-          <a href="resultats.html" class="btn btn-primary btn-lg btn-full btn-arrow"
-             id="cta-simulation-next"
-             onclick="trackCtaClick('Voir mon offre', 'resultats')">
+          <a href="resultats.html" class="btn btn-primary btn-lg btn-full btn-arrow" id="cta-simulation-next"
+            onclick="trackCtaClick('Voir mon offre', 'resultats')">
             Voir mon offre
           </a>
         </div>
@@ -223,14 +225,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       overflow: hidden;
       margin-top: 8px;
     }
+
     .qr-row {
-      display: flex; justify-content: space-between; align-items: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       padding: 13px 18px;
       border-bottom: 1px solid var(--border);
       font-size: .9rem;
     }
-    .qr-row span { color: var(--slate); }
-    .qr-row strong { font-family: 'Sora', sans-serif; font-weight: 600; color: var(--navy); }
+
+    .qr-row span {
+      color: var(--slate);
+    }
+
+    .qr-row strong {
+      font-family: 'Sora', sans-serif;
+      font-weight: 600;
+      color: var(--navy);
+    }
   </style>
 </body>
+
 </html>
