@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-TTVVF8ZS');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FlexiCredit — Votre crédit personnel en ligne</title>
   <link rel="stylesheet" href="css/style.css">
@@ -11,7 +20,12 @@
     // GTM snippet ici en production
   </script>
 </head>
+
 <body data-step="landing">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TTVVF8ZS" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
   <!-- HEADER -->
   <header class="site-header">
@@ -33,11 +47,12 @@
         <div class="hero-content fade-in">
           <div class="badge badge-green mb-4">✦ 100% en ligne · Réponse rapide</div>
           <h1>Votre crédit personnel,<br>simple et transparent.</h1>
-          <p class="hero-subtitle">Simulez votre prêt en 2 minutes. Obtenez une offre personnalisée sans engagement, sans frais de dossier.</p>
+          <p class="hero-subtitle">Simulez votre prêt en 2 minutes. Obtenez une offre personnalisée sans engagement,
+            sans frais de dossier.</p>
 
           <div class="hero-cta mt-8">
             <a href="pages/simulation.html" class="btn btn-primary btn-lg btn-arrow" id="cta-hero-main"
-               onclick="trackCtaClick('Simuler mon crédit', 'simulation')">
+              onclick="trackCtaClick('Simuler mon crédit', 'simulation')">
               Simuler mon crédit
             </a>
             <p class="text-muted mt-4">⏱ 2 minutes · Sans impact sur votre score</p>
@@ -111,7 +126,7 @@
 
       <div class="text-center mt-8">
         <a href="pages/simulation.html" class="btn btn-primary btn-arrow"
-           onclick="trackCtaClick('Je commence maintenant', 'simulation')">
+          onclick="trackCtaClick('Je commence maintenant', 'simulation')">
           Je commence maintenant
         </a>
       </div>
@@ -144,50 +159,131 @@
   </script>
 
   <style>
-    .hero { padding: 72px 0 80px; }
-    .hero-inner {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 60px; align-items: center;
+    .hero {
+      padding: 72px 0 80px;
     }
-    .hero-subtitle { font-size: 1.1rem; color: var(--slate); margin-top: 16px; line-height: 1.7; }
-    .hero-cta { display: flex; flex-direction: column; align-items: flex-start; }
 
-    .preview-card { max-width: 320px; margin-left: auto; }
-    .preview-amount {
-      font-family: 'Sora', sans-serif; font-size: 2.4rem; font-weight: 700;
-      color: var(--navy); margin-bottom: 4px;
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
     }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: var(--slate);
+      margin-top: 16px;
+      line-height: 1.7;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .preview-card {
+      max-width: 320px;
+      margin-left: auto;
+    }
+
+    .preview-amount {
+      font-family: 'Sora', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
     .preview-row {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 10px 0; border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
       font-size: .9rem;
     }
-    .preview-row:last-of-type { border-bottom: none; }
-    .preview-disclaimer { font-size: .72rem; color: var(--muted); line-height: 1.5; }
 
-    .how-it-works { padding: 72px 0; background: var(--white); }
-    .steps-grid {
-      display: flex; align-items: center; gap: 8px;
-      max-width: 860px; margin: 0 auto;
+    .preview-row:last-of-type {
+      border-bottom: none;
     }
-    .step-card { flex: 1; text-align: center; padding: 28px 20px; }
+
+    .preview-disclaimer {
+      font-size: .72rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .how-it-works {
+      padding: 72px 0;
+      background: var(--white);
+    }
+
+    .steps-grid {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .step-card {
+      flex: 1;
+      text-align: center;
+      padding: 28px 20px;
+    }
+
     .step-number {
-      width: 40px; height: 40px; border-radius: 50%;
-      background: var(--green-pale); color: var(--green);
-      font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.1rem;
-      display: flex; align-items: center; justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--green-pale);
+      color: var(--green);
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       margin: 0 auto 14px;
     }
-    .step-card h3 { margin-bottom: 8px; }
-    .step-card p { font-size: .875rem; }
-    .step-arrow { font-size: 1.4rem; color: var(--border); flex-shrink: 0; }
+
+    .step-card h3 {
+      margin-bottom: 8px;
+    }
+
+    .step-card p {
+      font-size: .875rem;
+    }
+
+    .step-arrow {
+      font-size: 1.4rem;
+      color: var(--border);
+      flex-shrink: 0;
+    }
 
     @media (max-width: 768px) {
-      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
-      .hero-visual { display: none; }
-      .steps-grid { flex-direction: column; align-items: stretch; }
-      .step-arrow { transform: rotate(90deg); text-align: center; }
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .hero-visual {
+        display: none;
+      }
+
+      .steps-grid {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .step-arrow {
+        transform: rotate(90deg);
+        text-align: center;
+      }
     }
   </style>
 </body>
+
 </html>
